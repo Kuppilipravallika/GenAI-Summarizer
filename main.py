@@ -25,7 +25,7 @@ def summarize_pdf(pdf_file_path, custom_prompt_text):
         return None
 
     llm = ChatGoogleGenerativeAI(
-        model="gemini-1.5-flash-latest",
+        model="gemini-1.5-flash",
         temperature=0.3,
         google_api_key=api_key
     )
@@ -33,7 +33,7 @@ def summarize_pdf(pdf_file_path, custom_prompt_text):
     # 2. Load and split the PDF
     loader = PyPDFLoader(pdf_file_path)
     docs_chunks = loader.load_and_split(
-        text_splitter=RecursiveCharacterTextSplitter(chunk_size=20000, chunk_overlap=1000)
+        text_splitter=RecursiveCharacterTextSplitter(chunk_size=4000, chunk_overlap=500)
     )
 
     # 3. Create the prompt from the user's template
@@ -114,3 +114,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
