@@ -11,8 +11,8 @@ from langchain.chains.summarize import load_summarize_chain
 from dotenv import load_dotenv
 
 # Load environment variables from API.env file
-load_dotenv('API.env')
-
+#load_dotenv('API.env')
+api_key = os.getenv("GEMINI_API_KEY")
 
 def summarize_pdf(pdf_file_path, custom_prompt_text):
     """
@@ -114,4 +114,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
